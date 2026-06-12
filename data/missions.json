@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Helios-1",
+    "destination": "Mars",
+    "status": "active",
+    "spacecraft_id": 2
+  },
+  {
+    "id": 2,
+    "name": "Helios-2",
+    "destination": "Mars",
+    "status": "planned",
+    "spacecraft_id": null
+  },
+  {
+    "id": 3,
+    "name": "Vega-1",
+    "destination": "Venus",
+    "status": "complete",
+    "spacecraft_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Eos-1",
+    "destination": "Europa",
+    "status": "planned",
+    "spacecraft_id": 3
+  }
+]

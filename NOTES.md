@@ -16,7 +16,7 @@
 
 ---
 
-## Task 4: Critique
+## Task 2: Critique
 
 [For each violation in bad_design.md: quote the endpoint, name the violation, explain why it matters.]
 
@@ -26,7 +26,7 @@
 
 ---
 
-## Task 5: Design Decisions
+## Task 3: Design Decisions
 
 **Why was each resource modelled the way it was?**
 

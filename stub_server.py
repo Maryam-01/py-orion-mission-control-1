@@ -2,8 +2,9 @@
 """
 Stub server for the Orion 7 Mission Control API.
 
-Runs on http://localhost:8000
-Stop with Ctrl+C.
+Infrastructure -- you do not need to read or modify this file.
+Run it with:  python stub_server.py
+Stop with:   Ctrl+C
 
 Endpoints:
   GET    /missions          List all missions
@@ -17,118 +18,23 @@ Endpoints:
 """
 
 import json
+import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-# ---- Data ----------------------------------------------------------------
+# ---- Load data from files ------------------------------------------------
 
-missions = [
-    {
-        "id": 1,
-        "name": "Helios-1",
-        "destination": "Mars",
-        "status": "active",
-        "spacecraft_id": 2,
-    },
-    {
-        "id": 2,
-        "name": "Helios-2",
-        "destination": "Mars",
-        "status": "planned",
-        "spacecraft_id": None,
-    },
-    {
-        "id": 3,
-        "name": "Vega-1",
-        "destination": "Venus",
-        "status": "complete",
-        "spacecraft_id": 1,
-    },
-    {
-        "id": 4,
-        "name": "Eos-1",
-        "destination": "Europa",
-        "status": "planned",
-        "spacecraft_id": 3,
-    },
-]
+_data_dir = os.path.join(os.path.dirname(__file__), "data")
 
-spacecraft = [
-    {
-        "id": 1,
-        "name": "Argo",
-        "type": "crewed",
-        "fuel_capacity": 12000,
-        "payload_limit": 4500,
-    },
-    {
-        "id": 2,
-        "name": "Hermes",
-        "type": "crewed",
-        "fuel_capacity": 15000,
-        "payload_limit": 6000,
-    },
-    {
-        "id": 3,
-        "name": "Pathfinder",
-        "type": "uncrewed",
-        "fuel_capacity": 8000,
-        "payload_limit": 2000,
-    },
-    {
-        "id": 4,
-        "name": "Sentinel",
-        "type": "uncrewed",
-        "fuel_capacity": 6000,
-        "payload_limit": 1500,
-    },
-]
+with open(os.path.join(_data_dir, "missions.json")) as _f:
+    missions = json.load(_f)
 
-crew = [
-    {
-        "id": 1,
-        "name": "Dr. Amara Osei",
-        "role": "Mission Specialist",
-        "clearance": "level_4",
-        "mission_id": 1,
-    },
-    {
-        "id": 2,
-        "name": "Commander Lena Vasquez",
-        "role": "Pilot",
-        "clearance": "level_5",
-        "mission_id": 1,
-    },
-    {
-        "id": 3,
-        "name": "Dr. Kai Nakamura",
-        "role": "Flight Surgeon",
-        "clearance": "level_3",
-        "mission_id": 1,
-    },
-    {
-        "id": 4,
-        "name": "Dr. Sara Okonkwo",
-        "role": "Engineer",
-        "clearance": "level_4",
-        "mission_id": 3,
-    },
-    {
-        "id": 5,
-        "name": "Felix Ramos",
-        "role": "Mission Specialist",
-        "clearance": "level_4",
-        "mission_id": None,
-    },
-    {
-        "id": 6,
-        "name": "Dr. Priya Singh",
-        "role": "Data Scientist",
-        "clearance": "level_3",
-        "mission_id": 4,
-    },
-]
+with open(os.path.join(_data_dir, "spacecraft.json")) as _f:
+    spacecraft = json.load(_f)
 
-next_mission_id = 5
+with open(os.path.join(_data_dir, "crew.json")) as _f:
+    crew = json.load(_f)
+
+next_mission_id = max(m["id"] for m in missions) + 1
 
 # ---- Handler -------------------------------------------------------------
 

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Amara Osei",
+    "role": "Mission Specialist",
+    "clearance": "level_4",
+    "mission_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Commander Lena Vasquez",
+    "role": "Pilot",
+    "clearance": "level_5",
+    "mission_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Dr. Kai Nakamura",
+    "role": "Flight Surgeon",
+    "clearance": "level_3",
+    "mission_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Dr. Sara Okonkwo",
+    "role": "Engineer",
+    "clearance": "level_4",
+    "mission_id": 3
+  },
+  {
+    "id": 5,
+    "name": "Felix Ramos",
+    "role": "Mission Specialist",
+    "clearance": "level_4",
+    "mission_id": null
+  },
+  {
+    "id": 6,
+    "name": "Dr. Priya Singh",
+    "role": "Data Scientist",
+    "clearance": "level_3",
+    "mission_id": 4
+  }
+]

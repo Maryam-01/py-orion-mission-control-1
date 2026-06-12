@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Argo",
+    "type": "crewed",
+    "fuel_capacity": 12000,
+    "payload_limit": 4500
+  },
+  {
+    "id": 2,
+    "name": "Hermes",
+    "type": "crewed",
+    "fuel_capacity": 15000,
+    "payload_limit": 6000
+  },
+  {
+    "id": 3,
+    "name": "Pathfinder",
+    "type": "uncrewed",
+    "fuel_capacity": 8000,
+    "payload_limit": 2000
+  },
+  {
+    "id": 4,
+    "name": "Sentinel",
+    "type": "uncrewed",
+    "fuel_capacity": 6000,
+    "payload_limit": 1500
+  }
+]
