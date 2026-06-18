@@ -15,11 +15,11 @@
 
 | Method | Path       |        Description                | Request Body | Success Code| Error Codes |
 |--------|------------|-----------------------------------|--------------|-------------|-------------|
-| GET    |/spacecrafts | Returns a list of all spacecrafts     |           |  200        |  400   
-| GET    | /spacecrafts/1| Returns a single spacecrafts at id_1 |          |  200        |  400 / 404
-| DELETE |/spacecrafts/3 | Deletes a spacecraft                 |          |  204        |  400 / 404
-| POST   |/spacecrafts   | Creates a new spacecraft             | json     |  201        |  400
-| PATCH  |/spacecrafts/1 | Assigns a crew member to a spacecraft| json     |  200        |  400 / 404
+| GET    |/spacecrafts | Returns a list of all spacecrafts      |        |  200        |  400   
+| GET    | /spacecrafts/1| Returns a single spacecrafts at id_1 |        |  200        |  400 / 404
+| DELETE |/spacecrafts/3 | Deletes a spacecraft                 |        |  204        |  400 / 404
+| POST   |/spacecrafts   | Creates a new spacecraft             | json   |  201        |  400
+| PATCH  |/spacecrafts/1 | Assigns a crew member to a spacecraft| json   |  200        |  400 / 404
 
 ## Crew
 
