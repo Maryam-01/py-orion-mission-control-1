@@ -1,6 +1,8 @@
 import psycopg2
 from fastapi import FastAPI
 from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -49,18 +51,18 @@ def get_crews():
 
 
 
-@app.get("/crews/{id}")
-def get_crew(id: int):
-    conn = get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM crews WHERE id = %s", (id,))
-    columns = [desc[0] for desc in cur.description]
-    row = cur.fetchone()
-    cur.close()
-    conn.close()
-    if row is None:
-        raise HTTPException(status_code=404, detail="Crew not found")
-    return dict(zip(columns, row))
+# @app.get("/crews/{id}")
+# def get_crew(id: int):
+#     conn = get_connection()
+#     cur = conn.cursor()
+#     cur.execute("SELECT * FROM crews WHERE id = %s", (id,))
+#     columns = [desc[0] for desc in cur.description]
+#     row = cur.fetchone()
+#     cur.close()
+#     conn.close()
+#     if row is None:
+#         raise HTTPException(status_code=404, detail="Crew not found")
+#     return dict(zip(columns, row))
 
 
 @app.get("/spacecrafts")
@@ -119,22 +121,34 @@ def post_missions():
 
 
 
+
+
+class CrewBasic(BaseModel):
+    crew_id: int
+    name: str
+
+
+
+
+
+
 @app.get("/crews/{id}")
-def get_crew_member(id: int):
+def get_crew(id: int):
     conn = get_connection()
     cur = conn.cursor()
 
-    # ✅ ONLY select the columns you want
-    cur.execute("SELECT id, name FROM crews WHERE id = ?", (id,))
+    cur.execute("SELECT id, name FROM crews WHERE id = %s", (id,))
     row = cur.fetchone()
 
     cur.close()
     conn.close()
 
     if row is None:
-        return {"error": "Crew not found"}
+        raise HTTPException(status_code=404, detail="Crew not found")
 
     return {
         "crew_id": row[0],
         "name": row[1]
     }
+
+print(app.routes)
